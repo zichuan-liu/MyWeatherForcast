@@ -1,5 +1,9 @@
 package com.lzc.util;
 
+/**
+ * @author lzc
+ * @des 获取网络状态的工具类
+ */
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;

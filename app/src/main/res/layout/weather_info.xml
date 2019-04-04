@@ -195,7 +195,7 @@
                     android:layout_height="180dp"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="0dp"
-                    android:src="@drawable/biz_plugin_weather_qing"/>
+                    android:src="@drawable/biz_plugin_weather_default"/>
                 <!-- 今日星期 -->
                 <TextView
                     android:id="@+id/week_today"
