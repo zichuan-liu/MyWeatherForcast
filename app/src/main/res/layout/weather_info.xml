@@ -31,6 +31,7 @@
             android:layout_height="fill_parent"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="0dp"
+            android:layout_marginRight="135dp"
             android:layout_toRightOf="@id/city_seperator"
             android:gravity="center_vertical"
             android:paddingLeft="5dip"
