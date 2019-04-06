@@ -2,38 +2,75 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
+    <!--
     <RelativeLayout
+        android:id="@+id/selectcity_title"
         android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:background="@color/colorPrimaryDark">
-
+        android:layout_height="45.0dp"
+        android:background="#000000">
+        <ImageView
+            android:id="@+id/title_selectCity_back"
+            android:layout_width="45.0dp"
+            android:layout_height="45.0dp"
+            android:src="@drawable/selectcity_bar_back"/>
+        <ImageView
+            android:layout_width="1.0dp"
+            android:layout_height="40.0dp"
+            android:layout_toRightOf="@id/title_selectCity_back"
+            android:background="#FFFFFF"/>
         <TextView
-            android:id="@+id/title_name"
+            android:id="@+id/title_selectCity_name"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:gravity="center"
             android:text="当前城市：北京"
-            android:textColor="@android:color/background_light"
-            android:textSize="20.0dip"/>
-
-        <ImageView
-            android:id="@+id/title_back"
-            android:layout_width="45.0dip"
-            android:layout_height="45.0dip"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/base_action_bar_back_normal"/>
-
-        <ImageView
-            android:layout_width="1.0dip"
-            android:layout_height="40dip"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_toRightOf="@id/title_back"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="center"/>
+            android:textColor="#FFFFFF"
+            android:textSize="25.0sp"
+            android:gravity="center">
+        </TextView>
     </RelativeLayout>
+    -->
+    <RelativeLayout
+        android:id="@+id/selectcity_search_rela"
+        android:layout_height="45.0dp"
+        android:layout_width="fill_parent">
+        <RelativeLayout
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_toLeftOf="@+id/selectcity_search_buttonrela">
+            <EditText
+                android:id="@+id/selectcity_search"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/search_city"
+                android:hint="搜索全国城市(中文)"
+                android:paddingLeft="35.0dp"
+                android:singleLine="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+            </EditText>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/selectcity_search_buttonrela"
+            android:layout_width="80.0dp"
+            android:layout_height="45.0dp"
 
+            android:layout_alignParentRight="true">
+            <ImageView
+                android:id="@+id/selectcity_search_button"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:src="@drawable/search_button" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
+        android:layout_below="@id/selectcity_search_rela">
+        <ListView
+            android:id="@+id/selectcity_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+    </RelativeLayout>
 </RelativeLayout>

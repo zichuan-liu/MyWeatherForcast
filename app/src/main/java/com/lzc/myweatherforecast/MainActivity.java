@@ -80,29 +80,28 @@ public class MainActivity extends Activity implements View.OnClickListener {
         initView();
     }
 
-    //点击事件
+
     @Override
-    public void onClick(View view) {
-        if(view.getId()==R.id.title_city_manager){
-            Intent intent = new Intent(this,SelectCity.class);
-            //startActivity(intent);
-            startActivityForResult(intent,1);
-        }
-
-        if (view.getId() == R.id.title_update_btn){
-            SharedPreferences sharedPreferences = getSharedPreferences("config",MODE_PRIVATE);
-            String cityCode = sharedPreferences.getString("main_city_code","101010100");
-            Log.d("myWeather",cityCode);
-
-            if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE){
-                Log.d("myWeather","网络ok");
-                queryWeatherCode(cityCode);
+    public void onClick(View v) {
+        if(v.getId()==R.id.title_update_btn)
+        {
+            SharedPreferences mySharePre = getSharedPreferences("CityCodePreference",Activity.MODE_PRIVATE);
+            String sharecode = mySharePre.getString("citycode","");
+            if(!sharecode.equals(""))
+            {
+                Log.d("sharecode",sharecode);
+                queryWeatherCode(sharecode);
             }else {
-                Log.d("myWeather","网络挂了");
-                Toast.makeText(MainActivity.this,"网络挂了！", Toast.LENGTH_LONG).show();
+                queryWeatherCode("101160801");//101200101
             }
         }
+        if(v.getId()==R.id.title_city_manager)
+        {
+            Intent intent = new Intent(this,SelectCity.class);
+            startActivity(intent);
+        }
     }
+
 
     //返回主界面时，传递城市代码数据
     //修改更新按钮的单击事件处理程序，并编写onActivityResult函数用于接收返回的数据。
