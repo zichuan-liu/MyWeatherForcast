@@ -33,6 +33,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final int UPDATE_TODAY_WEATHER = 1;
 
+    private String updateCityCode = "-1";
+
     //更新按钮
     private ImageView mUpdataBtn;
     //城市选择按钮
@@ -41,7 +43,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     //相关的控件
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
             temperatureTv, climateTv, windTv, city_name_Tv;
-    private ImageView weatherImg, pmImg;
+    private ImageView weatherImg, pmImg,SelectCityBtn ,LocateBtn;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -62,8 +64,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_info);
 
+        SelectCityBtn = (ImageView)findViewById(R.id.title_city_manager);
+        SelectCityBtn.setOnClickListener(this);
+
         mUpdataBtn = (ImageView) findViewById(R.id.title_update_btn);
         mUpdataBtn.setOnClickListener(this);
+
+        LocateBtn = (ImageView)findViewById(R.id.title_location);
+        LocateBtn.setOnClickListener(this);
+
+        mCitySelect = (ImageView)findViewById(R.id.title_city_manager);
+        mCitySelect.setOnClickListener(this);
+
+        updateCityCode = getIntent().getStringExtra("citycode");
+        if(updateCityCode!="-1"&& updateCityCode != null)
+        {
+            queryWeatherCode(updateCityCode);
+        }
 
         if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE) {
             Log.d("myWeather", "网络OK");
@@ -74,8 +91,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Toast.makeText(MainActivity.this,"网络挂了！", Toast.LENGTH_LONG).show();
         }
 
-        mCitySelect = (ImageView)findViewById(R.id.title_city_manager);
-        mCitySelect.setOnClickListener(this);
 
         initView();
     }
@@ -92,13 +107,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 Log.d("sharecode",sharecode);
                 queryWeatherCode(sharecode);
             }else {
-                queryWeatherCode("101160801");//101200101
+                queryWeatherCode("101200101");//101200101
             }
         }
         if(v.getId()==R.id.title_city_manager)
         {
+            Log.d("click","title_city_manager");
             Intent intent = new Intent(this,SelectCity.class);
             startActivity(intent);
+        }
+        if(v.getId()== R.id.title_location){
+            //Locate mLocation = new Locate(this);
+            //mLocation.startLocation();
+            Log.d("click","title_city_locate");
+            Intent intent = new Intent(this,Locate.class);
+            startActivity(intent);
+        }
+        if (v.getId()==R.id.title_share){
+            Log.d("click","title_share");
         }
     }
 
@@ -293,7 +319,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         pmDataTv.setText(todayWeather.getPm25());
         pmQualityTv.setText(todayWeather.getQuality());
         weekTv.setText(todayWeather.getDate());
-        temperatureTv.setText(todayWeather.getHigh()+"~"+todayWeather.getLow());
+        temperatureTv.setText(todayWeather.getLow()+"~"+todayWeather.getHigh());
         climateTv.setText(todayWeather.getType());
         windTv.setText("风力:"+todayWeather.getFengli());
 
