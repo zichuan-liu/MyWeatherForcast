@@ -35,7 +35,6 @@
             android:layout_toRightOf="@id/city_seperator"
             android:gravity="center_vertical"
             android:paddingLeft="5dip"
-            android:text="北京天气"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="22.0sp"/>
 
@@ -68,14 +67,17 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/title"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="0dp"
         android:background="@drawable/bg"
-        android:orientation="vertical" >
+        android:orientation="vertical">
         <!-- 今日天气信息 -->
+
         <RelativeLayout
             android:id="@+id/weather_today"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="10.0dip" >
+            android:padding="10.0dip">
             <!-- 城市名称 -->
             <TextView
                 android:id="@+id/city"
@@ -87,44 +89,44 @@
                 android:singleLine="true"
                 android:text="北京"
                 android:textColor="@android:color/white"
-                android:textSize="40.0sp" />
+                android:textSize="40.0sp"/>
             <!-- 发布时间 -->
             <TextView
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_below="@id/city"
+                android:layout_alignParentLeft="true"
                 android:layout_marginLeft="15.0dip"
                 android:layout_marginTop="5dip"
                 android:singleLine="true"
                 android:text="今天18:25发布"
                 android:textColor="@android:color/white"
-                android:textSize="15.0sp" />
+                android:textSize="15.0sp"/>
             <!-- 湿度信息 -->
             <TextView
                 android:id="@+id/humidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_below="@id/time"
+                android:layout_alignParentLeft="true"
                 android:layout_marginLeft="15.0dip"
                 android:singleLine="true"
                 android:text="湿度:57%"
                 android:textColor="@android:color/white"
-                android:textSize="15.0sp" />
+                android:textSize="15.0sp"/>
             <!-- PM2.5整体信息块 -->
             <LinearLayout
                 android:id="@+id/pm2_5_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:orientation="vertical" >
+                android:layout_alignParentRight="true"
+                android:orientation="vertical">
 
                 <!-- PM2.5详情 -->
                 <LinearLayout
-                    android:layout_width="137dp"
+                    android:layout_width="154dp"
                     android:layout_height="73dp"
                     android:orientation="horizontal"
                     android:paddingLeft="12.0dip"
@@ -139,7 +141,7 @@
                         <!-- PM2.5 -->
                         <TextView
                             android:id="@+id/pm2_5"
-                            android:layout_width="wrap_content"
+                            android:layout_width="58dp"
                             android:layout_height="wrap_content"
                             android:singleLine="true"
                             android:text="PM2.5"
@@ -148,8 +150,8 @@
                         <!-- PM2.5数值 -->
                         <TextView
                             android:id="@+id/pm_data"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="75dp"
+                            android:layout_height="61dp"
                             android:singleLine="true"
                             android:text="220"
                             android:textColor="@android:color/white"
@@ -161,7 +163,6 @@
                         android:id="@+id/pm2_5_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5.0dip"
                         android:src="@drawable/biz_plugin_weather_0_50"/>
                 </LinearLayout>
 
@@ -169,7 +170,7 @@
                 <TextView
                     android:id="@+id/pm2_5_quality"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="32dp"
                     android:gravity="center"
                     android:singleLine="true"
                     android:text="重度污染"
@@ -178,8 +179,8 @@
             </LinearLayout>
             <!-- 今日天气信息块 -->
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="369dp"
+                android:layout_height="256dp"
                 android:layout_below="@id/humidity"
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
@@ -190,8 +191,8 @@
                 <!-- 天气情况图片示例 -->
                 <ImageView
                     android:id="@+id/weather_img"
-                    android:layout_width="183dp"
-                    android:layout_height="180dp"
+                    android:layout_width="169dp"
+                    android:layout_height="218dp"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="0dp"
                     android:src="@drawable/biz_plugin_weather_default"/>
@@ -201,7 +202,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginLeft="5dip"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="27dp"
                     android:layout_toRightOf="@id/weather_img"
                     android:singleLine="true"
                     android:text="今天 星期三"
@@ -213,7 +215,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/week_today"
-                    android:layout_marginLeft="5dip"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
                     android:layout_toRightOf="@id/weather_img"
                     android:singleLine="true"
                     android:text="-2℃~7℃"
@@ -225,7 +228,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/temperature"
-                    android:layout_marginLeft="5dip"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="4dp"
                     android:layout_toRightOf="@id/weather_img"
                     android:singleLine="true"
                     android:text="多云转晴"
@@ -237,7 +241,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/climate"
-                    android:layout_marginLeft="5dip"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="3dp"
                     android:layout_toRightOf="@id/weather_img"
                     android:singleLine="true"
                     android:text="微风"
@@ -251,6 +256,31 @@
 
         <!-- 广告等信息 -->
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="bottom|center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/returnback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="36dp"
+                android:background="#d95b5b"
+                android:text="退出"
+                android:textColor="#ffffff"
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+
     </LinearLayout>
+
 
 </RelativeLayout>

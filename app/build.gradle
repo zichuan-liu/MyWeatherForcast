@@ -18,10 +18,9 @@ android {
     }
     sourceSets {
         main {
-            jniLibs.srcDirs = ['libs']
+            jniLibs.srcDirs = ['libs']    //disable automatic ndk-build
         }
     }
-
 }
 
 dependencies {

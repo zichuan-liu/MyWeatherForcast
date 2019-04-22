@@ -16,6 +16,7 @@ import com.lzc.bean.City;
 
 import java.util.List;
 
+
 public class Locate extends Activity{
     private LocationClient mLocationClient;
     private MyLocationListener myLocationListener;
@@ -76,4 +77,3 @@ public class Locate extends Activity{
         mLocationClient.setLocOption(option);
     }
 }
-

@@ -9,11 +9,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lzc.bean.TodayWeather;
+import com.lzc.user_login.Login;
 import com.lzc.util.NetUtil;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -35,27 +37,35 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private String updateCityCode = "-1";
 
+    private static int login = -1;
+
     //更新按钮
     private ImageView mUpdataBtn;
     //城市选择按钮
     private ImageView mCitySelect;
+
+    //退出
+    private Button mReturnButton;
 
     //相关的控件
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
             temperatureTv, climateTv, windTv, city_name_Tv;
     private ImageView weatherImg, pmImg,SelectCityBtn ,LocateBtn;
 
-    private Handler mHandler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            switch (msg.what) {
-                case UPDATE_TODAY_WEATHER:
-                    updateTodayWeather((TodayWeather) msg.obj);
+
+    private Handler mHandler = new Handler()
+    {
+        public void handleMessage(android.os.Message message)
+        {
+            switch (message.what)
+            {
+                case 1:
+                    updateTodayWeather((TodayWeather) message.obj);
                     break;
                 default:
                     break;
             }
         }
-
     };
 
     //网络状态检查
@@ -76,10 +86,30 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mCitySelect = (ImageView)findViewById(R.id.title_city_manager);
         mCitySelect.setOnClickListener(this);
 
+        mReturnButton = (Button)findViewById(R.id.returnback);
+        mReturnButton.setOnClickListener(this);
+
+
+        //起始页面
         updateCityCode = getIntent().getStringExtra("citycode");
         if(updateCityCode!="-1"&& updateCityCode != null)
         {
             queryWeatherCode(updateCityCode);
+        }else
+        {
+            SharedPreferences sharedPreferences = getSharedPreferences(
+                    "CityCodePreference",Activity.MODE_PRIVATE);
+            String defaultCityCode = sharedPreferences.getString("citycode","");
+            if(defaultCityCode!=null){
+                //queryWeatherCode(updateCityCode);
+            }
+
+        }
+        if(login==-1){
+            login = 1;
+            Intent intent = new Intent(this,Login.class) ;    //切换Login Activity至User Activity
+            startActivity(intent);
+            finish();
         }
 
         if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE) {
@@ -90,7 +120,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Log.d("myWeather", "网络挂了");
             Toast.makeText(MainActivity.this,"网络挂了！", Toast.LENGTH_LONG).show();
         }
-
 
         initView();
     }
@@ -125,6 +154,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         if (v.getId()==R.id.title_share){
             Log.d("click","title_share");
+        }
+        if (v.getId()==R.id.returnback){
+            //setContentView(R.layout.login);
+            login=-1;
+            Intent intent = new Intent(this,Login.class) ;
+            startActivity(intent);
+            finish();
         }
     }
 
@@ -396,4 +432,5 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Toast.makeText(MainActivity.this,"更新成功！",Toast.LENGTH_SHORT).show();
 
     }
+
 }

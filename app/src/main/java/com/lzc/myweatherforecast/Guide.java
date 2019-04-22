@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Guide extends Activity implements ViewPager.OnPageChangeListener{
     private List<View> views;
     private ViewPagerAdapter viewPagerAdapter;
