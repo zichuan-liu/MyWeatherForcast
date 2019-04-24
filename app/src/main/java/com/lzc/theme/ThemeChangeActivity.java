@@ -10,6 +10,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 
+import com.lzc.changeforecast.ChangeWeb;
 import com.lzc.myweatherforecast.MainActivity;
 import com.lzc.myweatherforecast.R;
 import com.lzc.user_login.Login;
@@ -35,6 +36,7 @@ public class ThemeChangeActivity extends Activity implements View.OnClickListene
         findViewById(R.id.btn_switch_theme_default).setOnClickListener(this);
         findViewById(R.id.btn_switch_theme_sky).setOnClickListener(this);
         findViewById(R.id.btn_switch_theme_grass).setOnClickListener(this);
+        findViewById(R.id.btn_change).setOnClickListener(this);
 
         // 演示如何用代码获取 attr 定义的主题相关的颜色
         View primaryColorPanel = findViewById(R.id.primary_color_panel);
@@ -59,10 +61,13 @@ public class ThemeChangeActivity extends Activity implements View.OnClickListene
             MainActivity.login=-1;
             Intent intent = new Intent(this,Login.class) ;
             startActivity(intent);
+        }else if (view.getId()==R.id.btn_change){
+            Intent intent = new Intent(this,ChangeWeb.class) ;
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
         }
-
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
     }
 
     private void changeTheme(int theme) {

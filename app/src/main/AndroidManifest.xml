@@ -70,5 +70,11 @@
             android:enabled="true"
             android:process=":remote" >
         </service>
+        <activity
+            android:name="com.lzc.changeforecast.ChangeWeb">
+        </activity>
+        <activity
+            android:name="com.lzc.changeforecast.Select">
+        </activity>
     </application>
 </manifest>
