@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/app/libs/BaiduLBS_Android.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/app/libs/BaiduLBS_Android.jar!/" />
+    </SOURCES>
   </library>
 </component>

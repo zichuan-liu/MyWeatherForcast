@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="?attr/color_primary">
 
     <RelativeLayout
         android:id="@+id/title"
         android:layout_width="fill_parent"
         android:layout_height="45.0dip"
-        android:background="@color/colorPrimaryDark"
+        android:background="?attr/color_primary"
         android:gravity="center_vertical">
 
         <ImageView
-            android:id="@+id/title_city_manager"
+            android:id="@+id/title_share"
             android:layout_width="45.0dip"
             android:layout_height="45.0dip"
-            android:background="@color/colorPrimaryDark"
-            android:src="@drawable/title_city"/>
+            android:background="?attr/color_primary"
+            android:src="@drawable/title_share"/>
 
         <ImageView
             android:id="@+id/city_seperator"
             android:layout_width="1.0dip"
             android:layout_height="40dip"
             android:layout_marginTop="2.0dip"
-            android:layout_toRightOf="@id/title_city_manager"
-            android:background="@color/colorPrimaryDark"/>
+            android:layout_toRightOf="@id/title_share"
+            android:background="?attr/color_primary"
+            />
 
         <TextView
             android:id="@+id/title_city_name"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="0dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
             android:layout_marginRight="135dp"
-            android:layout_toRightOf="@id/city_seperator"
+            android:layout_toEndOf="@+id/title_share"
+            android:layout_toRightOf="@+id/title_share"
             android:gravity="center_vertical"
             android:paddingLeft="5dip"
-            android:textColor="@color/colorPrimaryDark"
+            android:text="北京"
+            android:textColor="?attr/color_text"
             android:textSize="22.0sp"/>
 
 
@@ -48,11 +53,11 @@
             android:src="@drawable/title_update"
             android:visibility="visible"/>
         <ImageView
-            android:id="@+id/title_share"
+            android:id="@+id/title_city_manager"
             android:layout_width="45.0dip"
             android:layout_height="45.0dip"
             android:layout_toLeftOf="@id/title_location"
-            android:src="@drawable/title_share"/>
+            android:src="@drawable/title_city"/>
 
         <ImageView
             android:id="@+id/title_location"
@@ -64,12 +69,11 @@
 
 
     <LinearLayout
+        android:id="@+id/bg_img"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/title"
-        android:layout_alignParentStart="true"
         android:layout_marginBottom="0dp"
-        android:background="@drawable/bg"
         android:orientation="vertical">
         <!-- 今日天气信息 -->
 
@@ -88,7 +92,7 @@
                 android:layout_marginLeft="15.0dip"
                 android:singleLine="true"
                 android:text="北京"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/color_text"
                 android:textSize="40.0sp"/>
             <!-- 发布时间 -->
             <TextView
@@ -101,7 +105,7 @@
                 android:layout_marginTop="5dip"
                 android:singleLine="true"
                 android:text="今天18:25发布"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/color_text"
                 android:textSize="15.0sp"/>
             <!-- 湿度信息 -->
             <TextView
@@ -113,7 +117,7 @@
                 android:layout_marginLeft="15.0dip"
                 android:singleLine="true"
                 android:text="湿度:57%"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/color_text"
                 android:textSize="15.0sp"/>
             <!-- PM2.5整体信息块 -->
             <LinearLayout
@@ -145,7 +149,7 @@
                             android:layout_height="wrap_content"
                             android:singleLine="true"
                             android:text="PM2.5"
-                            android:textColor="@android:color/white"
+                            android:textColor="?attr/color_text"
                             android:textSize="12.0sp"/>
                         <!-- PM2.5数值 -->
                         <TextView
@@ -154,7 +158,7 @@
                             android:layout_height="61dp"
                             android:singleLine="true"
                             android:text="220"
-                            android:textColor="@android:color/white"
+                            android:textColor="?attr/color_text"
                             android:textSize="30.0sp"
                             />
                     </LinearLayout>
@@ -174,7 +178,7 @@
                     android:gravity="center"
                     android:singleLine="true"
                     android:text="重度污染"
-                    android:textColor="@android:color/white"
+                    android:textColor="?attr/color_text"
                     />
             </LinearLayout>
             <!-- 今日天气信息块 -->
@@ -194,8 +198,7 @@
                     android:layout_width="169dp"
                     android:layout_height="218dp"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="0dp"
-                    android:src="@drawable/biz_plugin_weather_default"/>
+                    android:layout_marginLeft="0dp"/>
                 <!-- 今日星期 -->
                 <TextView
                     android:id="@+id/week_today"
@@ -207,7 +210,7 @@
                     android:layout_toRightOf="@id/weather_img"
                     android:singleLine="true"
                     android:text="今天 星期三"
-                    android:textColor="@android:color/white"
+                    android:textColor="?attr/color_text"
                     android:textSize="20sp"/>
                 <!-- 温度范围 -->
                 <TextView
@@ -220,7 +223,7 @@
                     android:layout_toRightOf="@id/weather_img"
                     android:singleLine="true"
                     android:text="-2℃~7℃"
-                    android:textColor="@android:color/white"
+                    android:textColor="?attr/color_text"
                     android:textSize="24sp"/>
                 <!-- 天气状况 -->
                 <TextView
@@ -233,7 +236,7 @@
                     android:layout_toRightOf="@id/weather_img"
                     android:singleLine="true"
                     android:text="多云转晴"
-                    android:textColor="@android:color/white"
+                    android:textColor="?attr/color_text"
                     android:textSize="20.0sp"/>
                 <!-- 风力信息 -->
                 <TextView
@@ -246,7 +249,7 @@
                     android:layout_toRightOf="@id/weather_img"
                     android:singleLine="true"
                     android:text="微风"
-                    android:textColor="@android:color/white"
+                    android:textColor="?attr/color_text"
                     android:textSize="20.0sp"/>
             </RelativeLayout>
 
@@ -256,28 +259,7 @@
 
         <!-- 广告等信息 -->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="bottom|center"
-            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/returnback"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="36dp"
-                android:background="#d95b5b"
-                android:text="退出"
-                android:textColor="#ffffff"
-                android:textSize="20dp"/>
-        </LinearLayout>
 
 
     </LinearLayout>

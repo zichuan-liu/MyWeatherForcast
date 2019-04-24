@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="theme_default" parent="AppTheme">
+        <item name="color_bkg_main">#f1f1f1</item>
+        <item name="color_action_bar">#673AB7</item>
+        <item name="color_action_bar_text">#fff</item>
+        <item name="color_primary">#673AB7</item>
+        <item name="color_primary_pressed">#80ee9c18</item>
+        <item name="color_primary_disabled">#666</item>
+        <item name="color_text">#202020</item>
+        <item name="color_text_pressed">#80202020</item>
+        <item name="color_text_disabled">#666</item>
+        <item name="color_text_sub">#717171</item>
+        <item name="color_text_hint">#b6b6b6</item>
+        <item name="color_divider">#e2e2e2</item>
+    </style>
+
+    <style name="theme_sky" parent="theme_default">
+        <item name="color_action_bar">#80202020</item>
+        <item name="color_primary">#80202020</item>
+        <item name="color_primary_pressed">#80202020</item>
+        <item name="color_text">#e2e2e2</item>
+
+    </style>
+
+    <style name="theme_grass" parent="theme_default">
+        <item name="color_action_bar">#63d64a</item>
+        <item name="color_primary">#8063</item>
+        <item name="color_primary_pressed">#8063d64a</item>
+        <item name="color_text">#80ee9c18</item>
+    </style>
+</resources>

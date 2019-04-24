@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/color_bkg_main"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/btn_switch_theme_sky"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorsky"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:text="邪恶灰" />
+
+    <TextView
+        android:id="@+id/btn_switch_theme_grass"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorgreen"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:text="老王绿" />
+
+    <TextView
+        android:id="@+id/btn_switch_theme_default"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:text="基佬紫" />
+
+    <FrameLayout
+        android:id="@+id/primary_color_panel"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="bottom|center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/returnback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="36dp"
+            android:background="#d95b5b"
+            android:text="退出"
+            android:textColor="#ffffff"
+            android:textSize="20dp"/>
+    </LinearLayout>
+
+</LinearLayout>

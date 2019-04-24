@@ -9,12 +9,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lzc.bean.TodayWeather;
+import com.lzc.theme.ThemeChangeActivity;
 import com.lzc.user_login.Login;
 import com.lzc.util.NetUtil;
 
@@ -37,15 +38,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private String updateCityCode = "-1";
 
-    private static int login = -1;
+    public static int login = -1;
 
+
+    private static LinearLayout temp;
     //更新按钮
     private ImageView mUpdataBtn;
     //城市选择按钮
     private ImageView mCitySelect;
-
-    //退出
-    private Button mReturnButton;
+    //设置按钮
+    private ImageView mTheme;
 
     //相关的控件
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
@@ -68,10 +70,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     };
 
+
+
     //网络状态检查
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTheme(ThemeChangeActivity.sCurrentTheme);
         setContentView(R.layout.weather_info);
 
         SelectCityBtn = (ImageView)findViewById(R.id.title_city_manager);
@@ -83,12 +89,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
         LocateBtn = (ImageView)findViewById(R.id.title_location);
         LocateBtn.setOnClickListener(this);
 
+        mTheme = (ImageView)findViewById(R.id.title_share);
+        mTheme.setOnClickListener(this);
+
         mCitySelect = (ImageView)findViewById(R.id.title_city_manager);
         mCitySelect.setOnClickListener(this);
 
-        mReturnButton = (Button)findViewById(R.id.returnback);
-        mReturnButton.setOnClickListener(this);
 
+        //设置背景图片
+        temp = (LinearLayout)findViewById(R.id.bg_img);
+        if(ThemeChangeActivity.sCurrentTheme == R.style.theme_default) {
+            temp.setBackgroundResource(R.drawable.bg);
+        }else if (ThemeChangeActivity.sCurrentTheme == R.style.theme_sky){
+            temp.setBackgroundResource(R.drawable.biz_plugin_weather_shenzhen_bg);
+        }else if (ThemeChangeActivity.sCurrentTheme == R.style.theme_grass){
+            temp.setBackgroundResource(R.drawable.bg2);
+        }else {
+            temp.setBackgroundResource(R.drawable.bg);
+        }
 
         //起始页面
         updateCityCode = getIntent().getStringExtra("citycode");
@@ -101,7 +119,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     "CityCodePreference",Activity.MODE_PRIVATE);
             String defaultCityCode = sharedPreferences.getString("citycode","");
             if(defaultCityCode!=null){
-                //queryWeatherCode(updateCityCode);
+                queryWeatherCode("101200101");
             }
 
         }
@@ -109,7 +127,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             login = 1;
             Intent intent = new Intent(this,Login.class) ;    //切换Login Activity至User Activity
             startActivity(intent);
-            finish();
         }
 
         if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE) {
@@ -154,14 +171,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         if (v.getId()==R.id.title_share){
             Log.d("click","title_share");
-        }
-        if (v.getId()==R.id.returnback){
-            //setContentView(R.layout.login);
-            login=-1;
-            Intent intent = new Intent(this,Login.class) ;
+            Intent intent = new Intent(this,ThemeChangeActivity.class) ;
             startActivity(intent);
-            finish();
         }
+
     }
 
 
@@ -244,6 +257,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             xmlPullParser.setInput(new StringReader(xmldata));
             int eventType = xmlPullParser.getEventType();
             Log.d("myWeather", "parseXML");
+
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 switch (eventType) {
                     // 判断当前事件是否为文档开始事件

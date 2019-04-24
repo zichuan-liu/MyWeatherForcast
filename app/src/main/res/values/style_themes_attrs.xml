@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="color_bkg_main" format="color" />
+
+    <attr name="color_action_bar" format="color" />
+    <attr name="color_action_bar_text" format="color" />
+
+    <attr name="color_primary" format="color" />
+    <attr name="color_primary_pressed" format="color" />
+    <attr name="color_primary_disabled" format="color" />
+
+    <attr name="color_text" format="color" />
+    <attr name="color_text_pressed" format="color" />
+    <attr name="color_text_disabled" format="color" />
+    <attr name="color_text_sub" format="color" />
+    <attr name="color_text_hint" format="color" />
+
+    <attr name="color_divider" format="color" />
+
+</resources>
