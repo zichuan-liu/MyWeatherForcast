@@ -33,6 +33,10 @@ public class ChangeWeb extends Activity implements View.OnClickListener{
         ImageView bj=(ImageView)findViewById(R.id.title_back);
         bj.setOnClickListener(this);
 
+        //取得启动该Activity的Intent对象
+        Intent intent =getIntent();
+        openUrl(intent.getStringExtra("citycode"));
+
     }
 
     @Override
@@ -45,7 +49,6 @@ public class ChangeWeb extends Activity implements View.OnClickListener{
             case R.id.title_city_manager:
                 Intent intent = new Intent(this,Select.class);
                 startActivity(intent);
-                openUrl(intent.getStringExtra("citycode"));
                 break;
         }
     }

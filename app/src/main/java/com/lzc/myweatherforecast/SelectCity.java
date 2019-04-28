@@ -28,12 +28,22 @@ public class SelectCity extends Activity implements View.OnClickListener{
     private List<City> mCityList;
     private MyApplication mApplication;
     private ArrayList<String> mArrayList;
+    private static ArrayList<String> mCityname = new ArrayList<String>();
     ArrayAdapter<String> adapter;
 
     private String updateCityCode = "-1";
     private String selectNo;
 
     boolean searched = false;
+
+    //设置主界面下拉菜单的收藏列表
+    public static void setDataList(List<String> data_list) {
+        for (int i = 0; i < mCityname.size(); i++) {
+            data_list.add(mCityname.get(i));
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +66,7 @@ public class SelectCity extends Activity implements View.OnClickListener{
             String provinceName = mCityList.get(i).getProvince();
             String cityName = mCityList.get(i).getCity();
             mArrayList.add("NO."+No_+":"+number+"-"+provinceName+"-"+cityName);
+
         }
         cityListLv = (ListView)findViewById(R.id.selectcity_lv);
         adapter = new ArrayAdapter<String>(SelectCity.this,android.R.layout.simple_list_item_1,mArrayList);
@@ -76,12 +87,22 @@ public class SelectCity extends Activity implements View.OnClickListener{
                 }
                 Log.d("update city code",updateCityCode);
 
+                //收藏
+                int flag = 0;
+                String cityName = mCityList.get(position).getCity();
+                for (int j = 0; j < mCityname.size(); j++) {
+                    if(mCityname.get(j).split("-")[0].equals(cityName))
+                        flag=1;
+                }
+                if (flag==0)
+                    mCityname.add(cityName+"-"+updateCityCode);
+
+
                 //用Shareperference 存储最近一次的citycode
                 SharedPreferences sharedPreferences = getSharedPreferences("CityCodePreference",Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("citycode",updateCityCode);
                 editor.commit();
-
                 intent.putExtra("citycode",updateCityCode);
                 startActivity(intent);
             }
@@ -110,6 +131,15 @@ public class SelectCity extends Activity implements View.OnClickListener{
                         mArrayList.clear();
                         mArrayList.add("NO." + No_ + ":" + number + "-" + provinceName + "-" + cityName);
                         Log.d("changed adapter data","NO." + No_ + ":" + number + "-" + provinceName + "-" + cityName);
+
+                        //收藏
+                        int flag = 0;
+                        for (int j = 0; j < mCityname.size(); j++) {
+                            if(mCityname.get(j).split("-")[0].equals(cityName))
+                                flag=1;
+                        }
+                        if (flag==0)
+                            mCityname.add(cityName+"-"+number);
                     }
 
                     adapter = new ArrayAdapter<String>(SelectCity.this,android.R.layout.simple_list_item_1,mArrayList);

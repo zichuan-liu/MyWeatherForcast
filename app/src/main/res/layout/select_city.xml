@@ -46,7 +46,9 @@
                 android:paddingLeft="35.0dp"
                 android:singleLine="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true">
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/colorblack"
+                android:textColorHint="@color/colorsky">
             </EditText>
         </RelativeLayout>
         <RelativeLayout

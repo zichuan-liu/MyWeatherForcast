@@ -40,7 +40,6 @@
             android:layout_toRightOf="@+id/title_back"
             android:gravity="center_vertical"
             android:paddingLeft="5dip"
-            android:text="北京"
             android:textColor="?attr/color_text"
             android:textSize="22.0sp"/>
 

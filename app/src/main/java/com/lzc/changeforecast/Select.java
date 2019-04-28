@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.lzc.app.MyApplication;
 import com.lzc.bean.City;
@@ -24,6 +25,7 @@ public class Select extends Activity implements View.OnClickListener{
     private ListView cityListLv;
     private EditText searchEt;
     private ImageView searchBtn;
+    private TextView title_city_name;
 
     private List<City> mCityList;
     private MyApplication mApplication;
@@ -43,6 +45,7 @@ public class Select extends Activity implements View.OnClickListener{
         searchBtn = (ImageView)findViewById(R.id.selectcity_search_button);
         searchBtn.setOnClickListener(this);
 
+        title_city_name = (TextView)findViewById(R.id.title_city_name);
         mApplication = (MyApplication)getApplication();
         mCityList = mApplication.getCityList();
         mArrayList = new ArrayList<String>();//不new会指向空
@@ -107,6 +110,7 @@ public class Select extends Activity implements View.OnClickListener{
                         mArrayList.clear();
                         mArrayList.add("NO." + No_ + ":" + number + "-" + provinceName + "-" + cityName);
                         Log.d("changed adapter data","NO." + No_ + ":" + number + "-" + provinceName + "-" + cityName);
+                        title_city_name.setText(cityName);
                     }
 
                     adapter = new ArrayAdapter<String>(Select.this,android.R.layout.simple_list_item_1,mArrayList);

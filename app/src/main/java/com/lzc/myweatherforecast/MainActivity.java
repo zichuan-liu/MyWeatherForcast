@@ -9,8 +9,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +33,8 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -39,6 +44,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private String updateCityCode = "-1";
 
     public static int login = -1;
+    private static boolean first=true;
 
 
     private static LinearLayout temp;
@@ -53,6 +59,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
             temperatureTv, climateTv, windTv, city_name_Tv;
     private ImageView weatherImg, pmImg,SelectCityBtn ,LocateBtn;
+
+    //下拉收藏
+    private Spinner spinner;
+    public List<String> data_list;
+    private ArrayAdapter<String> arr_adapter;
 
 
     private Handler mHandler = new Handler()
@@ -94,6 +105,40 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         mCitySelect = (ImageView)findViewById(R.id.title_city_manager);
         mCitySelect.setOnClickListener(this);
+
+        //设置收藏城市下拉菜单
+        spinner = (Spinner) findViewById(R.id.spinner);
+        data_list = new ArrayList<String>();
+        SelectCity.setDataList(data_list);
+        //适配器
+        arr_adapter= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data_list);
+        //设置样式
+        arr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //加载适配器
+        spinner.setAdapter(arr_adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                //此处还有点击bug
+                if (first) {
+                    first= false;
+                    Log.e("我没被点击","200000000000000000");
+                } else {
+                    String cityName = spinner.getItemAtPosition(position).toString();
+                    String cityCode = cityName.split("-")[1];
+                    Log.e("我被点击",cityName);
+                    first=true;
+                    queryWeatherCode(cityCode);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         //设置背景图片
@@ -140,6 +185,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         initView();
     }
+
 
 
     @Override
