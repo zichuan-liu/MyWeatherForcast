@@ -38,6 +38,7 @@ public class SelectCity extends Activity implements View.OnClickListener{
 
     //设置主界面下拉菜单的收藏列表
     public static void setDataList(List<String> data_list) {
+        data_list.add("收藏城市");
         for (int i = 0; i < mCityname.size(); i++) {
             data_list.add(mCityname.get(i));
         }

@@ -116,22 +116,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
         arr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //加载适配器
         spinner.setAdapter(arr_adapter);
+        spinner.setSelection(0, false);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                //此处还有点击bug
-                if (first) {
-                    first= false;
-                    Log.e("我没被点击","200000000000000000");
-                } else {
+//
+//                //此处还有点击bug
+//                if (first) {
+//                    first= false;
+//                    Log.e("我没被点击","200000000000000000");
+//                } else {
                     String cityName = spinner.getItemAtPosition(position).toString();
                     String cityCode = cityName.split("-")[1];
                     Log.e("我被点击",cityName);
                     first=true;
-                    queryWeatherCode(cityCode);
-                }
+                    if(cityCode!=null)
+                        queryWeatherCode(cityCode);
+//                }
             }
 
             @Override

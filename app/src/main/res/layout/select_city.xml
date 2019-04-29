@@ -55,7 +55,7 @@
             android:id="@+id/selectcity_search_buttonrela"
             android:layout_width="80.0dp"
             android:layout_height="45.0dp"
-
+            android:background="?android:attr/selectableItemBackground"
             android:layout_alignParentRight="true">
             <ImageView
                 android:id="@+id/selectcity_search_button"
@@ -71,6 +71,7 @@
         android:layout_below="@id/selectcity_search_rela">
         <ListView
             android:id="@+id/selectcity_lv"
+            android:background="?android:attr/selectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </ListView>
