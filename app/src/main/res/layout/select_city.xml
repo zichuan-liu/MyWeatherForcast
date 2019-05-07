@@ -71,9 +71,8 @@
         android:layout_below="@id/selectcity_search_rela">
         <ListView
             android:id="@+id/selectcity_lv"
-            android:background="?android:attr/selectableItemBackground"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </ListView>
+            android:layout_height="wrap_content"
+            />
     </RelativeLayout>
 </RelativeLayout>

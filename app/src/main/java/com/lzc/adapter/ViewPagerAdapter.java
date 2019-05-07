@@ -1,4 +1,4 @@
-package com.lzc.myweatherforecast;
+package com.lzc.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

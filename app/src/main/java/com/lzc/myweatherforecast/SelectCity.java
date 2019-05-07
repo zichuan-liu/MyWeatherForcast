@@ -11,7 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.lzc.adapter.MyAdapter;
 import com.lzc.app.MyApplication;
 import com.lzc.bean.City;
 
@@ -69,10 +71,16 @@ public class SelectCity extends Activity implements View.OnClickListener{
             mArrayList.add("NO."+No_+":"+number+"-"+provinceName+"-"+cityName);
 
         }
-        cityListLv = (ListView)findViewById(R.id.selectcity_lv);
-        adapter = new ArrayAdapter<String>(SelectCity.this,android.R.layout.simple_list_item_1,mArrayList);
-        adapter.notifyDataSetChanged();
+
+        this.cityListLv = (ListView) findViewById(R.id.selectcity_lv);
+
+        final MyAdapter adapter = new MyAdapter(SelectCity.this, mArrayList);
         cityListLv.setAdapter(adapter);
+
+//        cityListLv = (ListView)findViewById(R.id.selectcity_lv);
+//        adapter = new ArrayAdapter<String>(SelectCity.this,android.R.layout.simple_list_item_1,mArrayList);
+//        adapter.notifyDataSetChanged();
+//        cityListLv.setAdapter(adapter);
 
         final Intent intent = new Intent(this,MainActivity.class).setFlags(
                 Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -88,15 +96,15 @@ public class SelectCity extends Activity implements View.OnClickListener{
                 }
                 Log.d("update city code",updateCityCode);
 
-                //收藏
-                int flag = 0;
-                String cityName = mCityList.get(position).getCity();
-                for (int j = 0; j < mCityname.size(); j++) {
-                    if(mCityname.get(j).split("-")[0].equals(cityName))
-                        flag=1;
-                }
-                if (flag==0)
-                    mCityname.add(cityName+"-"+updateCityCode);
+//                //收藏
+//                int flag = 0;
+//                String cityName = mCityList.get(position).getCity();
+//                for (int j = 0; j < mCityname.size(); j++) {
+//                    if(mCityname.get(j).split("-")[0].equals(cityName))
+//                        flag=1;
+//                }
+//                if (flag==0)
+//                    mCityname.add(cityName+"-"+updateCityCode);
 
 
                 //用Shareperference 存储最近一次的citycode
@@ -110,6 +118,26 @@ public class SelectCity extends Activity implements View.OnClickListener{
         };
         //为组件绑定监听
         cityListLv.setOnItemClickListener(itemClickListener);
+
+        //ListView item 中的删除按钮的点击事件
+        adapter.setOnItemDeleteClickListener(new MyAdapter.onItemDeleteListener() {
+            @Override
+            public void onDeleteClick(int i) {
+                //收藏
+                int flag = 0;
+                String cityName = mCityList.get(i).getCity();
+
+                for (int j = 0; j < mCityname.size(); j++) {
+                    if(mCityname.get(j).split("-")[0].equals(cityName))
+                        flag=1;
+                }
+                if (flag==0)
+                    mCityname.add(cityName+"-"+mCityList.get(i).getNumber());
+
+                Toast.makeText(SelectCity.this, "已收藏", Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     @Override

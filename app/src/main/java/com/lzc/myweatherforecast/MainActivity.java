@@ -121,19 +121,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//
-//                //此处还有点击bug
-//                if (first) {
-//                    first= false;
-//                    Log.e("我没被点击","200000000000000000");
-//                } else {
                     String cityName = spinner.getItemAtPosition(position).toString();
                     String cityCode = cityName.split("-")[1];
                     Log.e("我被点击",cityName);
                     first=true;
                     if(cityCode!=null)
                         queryWeatherCode(cityCode);
-//                }
             }
 
             @Override
@@ -187,8 +180,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         initView();
     }
-
-
 
     @Override
     public void onClick(View v) {

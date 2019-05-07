@@ -8,6 +8,7 @@
     <string name="strAccInputLabel">帐号</string>
     <string name="strPswInputLabel">密码</string>
     <string name="login">登 录</string>
+    <string name="s_view_btn">收 藏</string>
     <string name="register">注 册</string>
     <string name="cancel">取 消</string>
     <string name="account_empty">用户名为空，请重新输入！</string>
