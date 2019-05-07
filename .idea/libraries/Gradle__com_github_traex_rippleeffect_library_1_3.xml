@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.traex.rippleeffect:library-1.3">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.3.aar/f6aefbb4839ce992d828c74a452389f2/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.3.aar/f6aefbb4839ce992d828c74a452389f2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.3.aar/f6aefbb4839ce992d828c74a452389f2/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.traex.rippleeffect/library/1.3/6c12c03c0bc2b4ef579622dd78632fd19a432884/library-1.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

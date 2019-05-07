@@ -74,7 +74,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="36dp"
-            android:background="#d95b5b"
+            android:background="@drawable/ripple2"
             android:text="退出"
             android:textColor="#ffffff"
             android:textSize="20dp"/>
